@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <title>Санкт‑Петербургский Красный Крест</title>
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      .btn_like{
+        border: none;
+        background: none;
+        color: black;
+        -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;
+      }
+      .btn_comment{
+        border: none;
+        background: none;
+      }
+      .btn_repost{
+        border: none;
+        background: none;
+      }
+  
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .success-message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background-color: #ff4444;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            display: none;
+        }
+        .success-message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background-color: #ff4444;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            display: none;
+        }
+        .btn{
+          background-color: #ff3333;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+        }
+        .btn:hover {
+            background-color: #ff1a1a;
+            transform: translateY(-2px);
+        }
+        .input, .textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ff4d4d;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #000000;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input:focus, .textarea:focus {
+            outline: none;
+            border-color: #ff1a1a;
+            box-shadow: 0 0 10px rgba(255, 26, 26, 0.3);
+        }
+        .activate{
+          -webkit-text-fill-color:red !important;
+        }
+    </style>
+  </head>
+  <body>
+    
+    <div id = "comm" class="comment-container">
+      <h2 style="color: #ff6666;margin-bottom: 1.5rem;text-align: center;" >Оставить комментарий</h2>
+      <form id="commentForm">
+          <div class="form-group">
+              <input class="input" type="text" id="name" placeholder="Ваше имя">
+          </div>
+          <div class="form-group">
+              <textarea class="textarea" id="comment" rows="5" placeholder="Ваш комментарий"></textarea>
+          </div>
+          <button class="btn" type="submit">Отправить</button>
+      </form>
+      <div class="success-message" id="successMessage">
+          Комментарий успешно отправлен!
+      </div>
+      <div class="error-message" id="errorMessage">
+          Пожалуйста, заполните все поля!
+      </div>
+  </div>
+
+    <div class="chat-container">
+      <div class="chat-window" id="chatWindow">
+        <div class="chat-header">Поддержка</div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message">
+                Добрый день! Чем мы можем вам помочь?
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Введите сообщение..." id="messageInput" onkeypress="handleKeyPress(event)">
+        </div>
+    </div>
+      <div class="chat-button">Отправить</div>
+      
+  </div>
+  <div class="top_header">
+    <div style="display: flex; align-items: center;">
+     <a href="index.html" style="max-width: fit-content;"><img height="69px" width="221px" src="logo.png"></a>
+     <div class="top-menu">
+      <div class="menu-item"><a href="about_us.html"><b>О нас</b></a></div>
+      <div class="menu-item"><a href="news.html"><b>Новости</b></a></div>
+      <div class="menu-item"><a href="contacts.html"><b>Контакты</b></a></div>
+      <div class="menu-item"><b>8-800-234-07-07</b></div>
+     </div>
+    </div>
+    <a href="login.html" class="profile" style="margin-right: 50px;"><div class="button"><i style="font-size: 40px;" class="fa-solid fa-circle-user"></i></div></a>
+  </div> 
+      <div class="container">
+        <div class="col-1">
+            <div style="margin-top: 80px; margin-bottom: 40px;">
+                <div style="max-height: fit-content; display: flex; flex-direction: row; justify-content: center;">
+                  <div class="window predl news_card" style="background: none;!important">
+                    <div style="margin: 10px;" class="ubuntu-regular">
+                     <div class="img-fr"><img class="news_img" src="img/img6.jpg"></div>
+                     <div style="margin: 4px; font-size: 12px; color: rgb(75, 75, 75);">20 сентября 2024</div>
+                     <div style="margin: 4px;font-size:17.6px;">Более 100 тысяч человек получили психосоциальную поддержку от Российского Красного Креста</div>
+                     </div>
+                     <div style="padding-left: 10px;">
+                      <button id="btn_like_0" class="btn_like"><i class="fa-solid fa-heart"></i></button>
+                      <button id="btn_comm_0" class="btn_comment"><i class="fa-solid fa-comments"></i></button>
+                      <button id="btn_repost_0" class="btn_repost"><i class="fa-solid fa-share-nodes"></i></button>
+                     </div>
+                     
+                  </div>
+                  <div class="window predl news_card" style="background: none;!important">
+                    <div style="margin: 10px;" class="ubuntu-regular">
+                     <div class="img-fr"><img class="news_img" src="img/img7.avif"></div>
+                     <div style="margin: 4px; font-size: 12px; color: rgb(75, 75, 75);">16 сентября 2024</div>
+                     <div style="margin: 4px;font-size:17.6px;">Российский Красный Крест расширяет возможности для благотворительности на ключевых онлайн-платформах</div>
+                    </div>
+                    <div style="padding-left: 10px;">
+                      <button id="btn_like_1" class="btn_like"><i class="fa-solid fa-heart"></i></button>
+                      <button id="btn_comm_1" class="btn_comment"><i class="fa-solid fa-comments"></i></button>
+                      <button id="btn_repost_1" class="btn_repost"><i class="fa-solid fa-share-nodes"></i></button>
+                     </div>
+                     
+                  </div>
+                </div>
+                <div style="max-height: fit-content; display: flex; flex-direction: row; justify-content: center;">
+                  <div class="window predl news_card" style="background: none;!important">
+                      <div style="margin: 10px;" class="ubuntu-regular">
+                        <div class="img-fr"><img class="news_img" src="img/img8.jpg"></div>
+                        <div style="margin: 4px; font-size: 12px; color: rgb(75, 75, 75);">6 сентября 2024</div>
+                        <div style="margin: 4px;font-size:17.6px;">Всероссийская акция РКК, приуроченная ко Всемирному дню донора костного мозга, пройдет в 75 регионах страны с 16 по 30 сентября</div>
+                       </div>
+                       <div style="padding-left: 10px;">
+                        <button id="btn_like_2" class="btn_like"><i class="fa-solid fa-heart"></i></button>
+                        <button id="btn_comm_2" class="btn_comment"><i class="fa-solid fa-comments"></i></button>
+                        <button id="btn_repost_2" class="btn_repost"><i class="fa-solid fa-share-nodes"></i></button>
+                       </div>
+                       
+                  </div>
+                  <div class="window predl news_card" style="background: none; height: 420px;">
+                       <div style="margin: 10px;" class="ubuntu-regular">
+                         <div class="img-fr"><img class="news_img" src="img/img9.jpg"></div>
+                         <div style="margin: 4px; font-size: 12px; color: rgb(75, 75, 75);">7 октября 2024</div>
+                         <div style="margin: 4px;font-size:17.6px;">Более 155 000 человек в 71 регионе страны стали участниками Всероссийской акции Российского Красного Креста, приуроченной ко Всемирному дню донора костного мозга</div>
+                       </div>
+                       <div style="padding-left: 10px;">
+                        <button id="btn_like_3" class="btn_like"><i class="fa-solid fa-heart"></i></button>
+                        <button id="btn_comm_3" class="btn_comment"><i class="fa-solid fa-comments"></i></button>
+                        <button id="btn_repost_3" class="btn_repost"><i class="fa-solid fa-share-nodes"></i></button>
+                       </div>
+                       
+                  </div> 
+                </div>
+         </div>
+        </div>
+    <script src="js/index.js"></script>
+    <script>
+      for(let i = 0;i<4; i++){
+        
+          if(localStorage.getItem('like_'+i)=='1'){
+            document.getElementById("btn_like_"+i).className="btn_like activate";
+          }else{
+            document.getElementById("btn_like_"+i).className="btn_like";
+          }
+       }
+      function comms(){
+       comm = document.getElementById("comm");
+       comm.style.scale=1;
+     }
+      for(let i = 0;i<4; i++){
+       btn_comm = document.getElementById('btn_comm_'+i);
+         btn_comm.onclick = comms;
+       }
+       for(let i = 0;i<4; i++){
+        document.getElementById("btn_like_"+i).addEventListener("click", function() {
+          if(this.className=="btn_like activate"){
+            this.className="btn_like";
+            localStorage.setItem('like_'+i,0);
+          }else{
+            this.className="btn_like activate";
+            localStorage.setItem('like_'+i,1);
+          }
+        });
+       }
+       for(let i = 0;i<4; i++){
+        document.getElementById("btn_repost_"+i).addEventListener("click", function() {
+          navigator.clipboard.writeText('http://example.com');
+          alert("Ссылка скопирована!");
+        });
+       }
+
+   </script>
+   <script>
+    // Обработчик нажатия Enter
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    }
+
+    // Функция отправки сообщения
+    function sendMessage() {
+        const input = document.getElementById('messageInput');
+        const message = input.value.trim();
+        
+        if (message) {
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Запускаем таймер для ответа бота
+            setTimeout(() => {
+                addMessage('Скоро ответим...', 'bot');
+            }, 2000);
+        }
+    }
+
+    // Функция добавления сообщения в чат
+    function addMessage(text, sender) {
+        const messagesContainer = document.getElementById('chatMessages');
+        
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chat-message ${sender}-message message-animation`;
+        messageDiv.textContent = text;
+        
+        messagesContainer.appendChild(messageDiv);
+        
+        // Прокрутка к последнему сообщению
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // Назначаем обработчики событий
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('.chat-button').addEventListener('click', sendMessage);
+    });
+</script>
+<style>
+  /* Добавляем стили для сообщений */
+  .chat-message {
+      margin: 8px;
+      padding: 12px;
+      border-radius: 15px;
+      max-width: 70%;
+      word-wrap: break-word;
+  }
+  
+  .user-message {
+      background: #ff6666;
+      color: white;
+      margin-left: auto;
+  }
+  
+  .bot-message {
+      background: #f0f0f0;
+      margin-right: auto;
+  }
+
+  /* Анимация появления сообщений */
+  @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .message-animation {
+      animation: slideIn 0.3s ease-out;
+  }
+</style>
+
+  </body>
+</html>

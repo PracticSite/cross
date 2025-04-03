@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>капча</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes borderPulse {
+            0% { border-color: #ffd7d7; }
+            50% { border-color: #ff5252; }
+            100% { border-color: #ffd7d7; }
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #fff5f5;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        .captcha-box {
+            background: white;
+            padding: 2rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(255, 82, 82, 0.1);
+            text-align: center;
+            animation: fadeIn 0.6s ease-out;
+            border: 2px solid;
+            animation: borderPulse 2s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2 {
+            color: #ff5252;
+            margin: 0 0 1.5rem 0;
+            font-weight: 600;
+            background: linear-gradient(45deg, #ff6b6b, #ff5252);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .timer {
+            color: #ff5252;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timer::before {
+            content: '⏳';
+            filter: hue-rotate(-20deg);
+        }
+
+        .loader {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: #ffebeb;
+            animation: loader 5s linear forwards;
+        }
+
+        @keyframes loader {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="captcha-box">
+        <div class="loader"></div>
+        <h2>Подтвердите, что вы не робот</h2>
+        <div class="timer">
+            <span id="timer">5</span> сек.
+        </div>
+    </div>
+
+    <script>
+        let seconds =5;
+        const timerElement = document.getElementById('timer');
+        
+        const countdown = setInterval(() => {
+            seconds--;
+            timerElement.textContent = seconds;
+            
+            if(seconds <= 0) {
+                clearInterval(countdown);
+                window.location.href = './index.html';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
