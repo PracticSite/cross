@@ -14,6 +14,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   </head>
   <body>
+    <div class="chat-container">
+      <div class="chat-window" id="chatWindow">
+        <div class="chat-header">Поддержка</div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message">
+                Добрый день! Чем мы можем вам помочь?
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Введите сообщение..." id="messageInput" onkeypress="handleKeyPress(event)">
+        </div>
+    </div>
+    </div>
+      <div class="chat-button">Отправить</div>
       <div class="top_header">
         <div style="display: flex; align-items: center;">
          <a href="index.html" style="max-width: fit-content;"><img height="69px" width="221px" src="logo.png"></a>
@@ -98,5 +112,73 @@
         </div>
       </div>
     <script src="js/index.js"></script>
+    <script>
+      function handleKeyPress(event) {
+         if (event.key === 'Enter') {
+             sendMessage();
+         }
+     }
+ 
+   
+     function sendMessage() {
+         const input = document.getElementById('messageInput');
+         const message = input.value.trim();
+         
+         if (message) {
+             addMessage(message, 'user');
+             input.value = '';
+             
+             setTimeout(() => {
+                 addMessage('Скоро ответим...', 'bot');
+             }, 2000);
+         }
+     }
+ 
+     function addMessage(text, sender) {
+         const messagesContainer = document.getElementById('chatMessages');
+         
+         const messageDiv = document.createElement('div');
+         messageDiv.className = `chat-message ${sender}-message message-animation`;
+         messageDiv.textContent = text;
+         
+         messagesContainer.appendChild(messageDiv);
+         
+         messagesContainer.scrollTop = messagesContainer.scrollHeight;
+     }
+ 
+     document.addEventListener('DOMContentLoaded', () => {
+         document.querySelector('.chat-button').addEventListener('click', sendMessage);
+     });
+ </script>
+ <style>
+   .chat-message {
+       margin: 8px;
+       padding: 12px;
+       border-radius: 15px;
+       max-width: 70%;
+       word-wrap: break-word;
+   }
+   
+   .user-message {
+       background: #ff6666;
+       color: white;
+       margin-left: auto;
+   }
+   
+   .bot-message {
+       background: #f0f0f0;
+       margin-right: auto;
+   }
+ 
+   @keyframes slideIn {
+       from { opacity: 0; transform: translateY(20px); }
+       to { opacity: 1; transform: translateY(0); }
+   }
+   
+   .message-animation {
+       animation: slideIn 0.3s ease-out;
+   }
+ </style>
+ 
   </body>
 </html>
