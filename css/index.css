@@ -308,14 +308,16 @@ a:hover{
         flex-direction: row;
         align-content: space-around;
         justify-content: center;
+
         align-items: center; /* Скрываем обычное меню */
     }
     
     .profile{
         position: absolute;
     margin-right: 50px;
-    right: -65px;
+    right: -55px;
     bottom: 14px;
+    scale: 0.8;
     }
     /* Гамбургер-меню */
     .mobile-menu-btn {
@@ -345,6 +347,7 @@ a:hover{
       background: #ff4242;
       color: white!important;
       border-radius: 5px;
+      scale: 0.8;
     }
     .window1 {
         position: static !important;
