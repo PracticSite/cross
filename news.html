@@ -251,14 +251,14 @@
 
    </script>
    <script>
-    // Обработчик нажатия Enter
+
     function handleKeyPress(event) {
         if (event.key === 'Enter') {
             sendMessage();
         }
     }
 
-    // Функция отправки сообщения
+
     function sendMessage() {
         const input = document.getElementById('messageInput');
         const message = input.value.trim();
@@ -267,7 +267,7 @@
             addMessage(message, 'user');
             input.value = '';
             
-            // Запускаем таймер для ответа бота
+        
             setTimeout(() => {
                 addMessage('Скоро ответим...', 'bot');
             }, 2000);
@@ -284,17 +284,16 @@
         
         messagesContainer.appendChild(messageDiv);
         
-        // Прокрутка к последнему сообщению
+      
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 
-    // Назначаем обработчики событий
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.chat-button').addEventListener('click', sendMessage);
     });
 </script>
 <style>
-  /* Добавляем стили для сообщений */
+
   .chat-message {
       margin: 8px;
       padding: 12px;
@@ -314,7 +313,7 @@
       margin-right: auto;
   }
 
-  /* Анимация появления сообщений */
+  
   @keyframes slideIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
